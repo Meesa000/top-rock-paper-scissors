@@ -2,24 +2,47 @@
 
 const moves = ['Rock', 'Paper', 'Scissors'];
 
-// create function that picks random number between 1 and 3 - this is how moves are chosen
-function randomInt (min, max) {
-    let chooseMove = Math.floor(Math.random() * (max - min + 1)) + min;  
-    console.log(chooseMove);
-    return chooseMove;
+
+function getComputerChoice(){
+    let random = Math.floor(Math.random() * moves.length);
+    console.log(moves[random]);
+    return moves[random];
 }
 
-// create function for computer choice and call random int function
-// when random int is 3, console log moves num is undefined????
-function computerChoice (){
-    let num = randomInt(1,3);
-    console.log(moves[num]);
-  
-
-  
-}
-
-computerChoice();
-// create function for playuer choice doing same way
 
 
+function playRound(playerSelection, computerSelection){
+
+    // rules for computer selecting rock
+   
+        // Rules for computer selecting rock
+        if (computerSelection == 'Rock' && playerSelection == 'rock') {
+            return 'It\'s a tie!';
+        } else if (computerSelection == 'Rock' && playerSelection == 'paper') {
+            return 'Player won!';
+        } else if (computerSelection == 'Rock' && playerSelection == 'scissors') {
+            return 'Computer won!';
+        }
+    
+        // Rules for computer selecting paper
+        if (computerSelection == 'Scissors' && playerSelection == 'rock') {
+            return 'Player won!';
+        } else if (computerSelection == 'Scissors' && playerSelection == 'paper') {
+            return 'Computer won!';
+        } else if (computerSelection == 'Scissors' && playerSelection == 'scissors') {
+            return 'It\'s a tie!';
+        }
+    
+        // Rules for computer selecting scissors
+        else if (computerSelection == 'Paper' && playerSelection == 'paper') {
+            return 'It\'s a tie!';
+        } else if (computerSelection == 'Paper' && playerSelection == 'scissors') {
+            return 'Player won!';
+        }
+    }
+    
+
+
+let computerSelection = getComputerChoice();
+let playerSelection = 'paper';
+console.log(playRound(playerSelection, computerSelection));
